@@ -1,7 +1,9 @@
 package com.example.spring_auth_demo.controller;
 
 
+import com.example.spring_auth_demo.dto.ApiResponse;
 import com.example.spring_auth_demo.dto.LoginRequest;
+import com.example.spring_auth_demo.dto.LoginResponse;
 import com.example.spring_auth_demo.dto.RegisterRequest;
 import com.example.spring_auth_demo.service.AuthService;
 import jakarta.validation.Valid;
@@ -20,14 +22,14 @@ public class AuthController {
 
 
     @PostMapping("/register")
-    public ResponseEntity<String> register (
+    public ResponseEntity<ApiResponse> register (
             @Valid @RequestBody RegisterRequest request) {
 
         return ResponseEntity.ok(authService.register(request));
     }
 
     @PostMapping("/login")
-    public ResponseEntity<String> login(
+    public ResponseEntity<LoginResponse> login(
             @Valid @RequestBody LoginRequest request
             ){
         return ResponseEntity.ok(
