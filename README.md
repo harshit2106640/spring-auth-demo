@@ -1,216 +1,120 @@
-# Spring Boot Authentication API
+# Spring Boot Full-Stack Authentication System
 
-A simple Spring Boot authentication project implementing:
+A full-stack authentication system built using Spring Boot, Spring Security, JWT, MySQL, HTML, CSS, and JavaScript.
 
+## Features
+
+### Authentication
 - User Registration
 - User Login
-- Validation
-- Exception Handling
-- Password Encryption using BCrypt
-- MySQL Database Integration
-- Layered Architecture
+- JWT Token Generation
+- BCrypt Password Hashing
+- Stateless Authentication
+
+### Authorization
+- USER and ADMIN roles
+- Protected APIs
+- Role-based access control
+
+### Frontend
+- Register page
+- Login page
+- Dashboard page
+- Logout functionality
+- JWT storage using localStorage
+
+### Validation & Exception Handling
+- DTO Validation
+- Global Exception Handling
+- Custom Exceptions
 
 ---
 
 # Tech Stack
 
+## Backend
 - Java 17
-- Spring Boot 3
-- Spring Web
-- Spring Data JPA
+- Spring Boot
 - Spring Security
+- Spring Data JPA
+- Hibernate
+- JWT (JJWT)
 - MySQL
-- Lombok
 - Maven
+- Lombok
 
----
-
-# Features
-
-## User Registration
-- Register new users
-- Prevent duplicate emails
-- Password hashing using BCrypt
-
-## User Login
-- Validate credentials
-- Secure password verification
-
-## Validation
-- Email validation
-- Required field validation
-- Password length validation
-
-## Exception Handling
-- Global exception handling using `@RestControllerAdvice`
-- Clean API responses
-
----
-
-# Project Structure
-
-```text
-src/main/java/com/example/springauthdemo
-│
-├── controller
-├── service
-├── repository
-├── entity
-├── dto
-├── exception
-└── config
-```
+## Frontend
+- HTML
+- CSS
+- JavaScript
+- Fetch API
 
 ---
 
 # API Endpoints
 
-## Register User
+## Register
+POST /api/auth/register
 
-### Request
+## Login
+POST /api/auth/login
 
-`POST /api/auth/register`
+## User Profile
+GET /api/user/profile
 
-```json
-{
-  "name": "John",
-  "email": "john@gmail.com",
-  "password": "123456"
-}
-```
-
-### Response
-
-```json
-{
-  "success": true,
-  "message": "User registered successfully"
-}
-```
+## Admin Dashboard
+GET /api/admin/dashboard
 
 ---
 
-## Login User
+# Frontend Pages
 
-### Request
-
-`POST /api/auth/login`
-
-```json
-{
-  "email": "john@gmail.com",
-  "password": "123456"
-}
-```
-
-### Response
-
-```json
-{
-  "success": true,
-  "message": "Login successful"
-}
-```
+- /register.html
+- /login.html
+- /dashboard.html
 
 ---
 
-# Validation Example
+# JWT Authentication Flow
 
-```json
-{
-  "name": "",
-  "email": "abc",
-  "password": "12"
-}
-```
-
-### Response
-
-```json
-{
-  "name": "Name is required",
-  "email": "Invalid email format",
-  "password": "Password must be at least 6 characters"
-}
-```
-
----
-
-# Database Configuration
-
-Update `application.properties`
-
-```properties
-spring.datasource.url=jdbc:mysql://localhost:3306/auth_db
-spring.datasource.username=root
-spring.datasource.password=YOUR_PASSWORD
-
-spring.jpa.hibernate.ddl-auto=update
-spring.jpa.show-sql=true
-```
+User Login
+→ JWT Generated
+→ Token Stored in Browser
+→ Token Sent with Requests
+→ Backend Validates JWT
+→ Access Granted
 
 ---
 
 # How to Run
 
-## 1. Clone Repository
+1. Clone Repository
 
-```bash
-git clone https://github.com/YOUR_USERNAME/spring-auth-demo.git
-```
+git clone https://github.com/harshit2106640/spring-auth-demo.git
 
-## 2. Open Project
+2. Create Database
 
-Open using IntelliJ IDEA or VS Code.
-
-## 3. Create Database
-
-```sql
 CREATE DATABASE auth_db;
-```
 
-## 4. Configure MySQL Credentials
+3. Configure MySQL credentials in application.properties
 
-Update:
+4. Run SpringAuthDemoApplication.java
 
-```properties
-application.properties
-```
-
-## 5. Run Application
-
-Run:
-
-```text
-SpringAuthDemoApplication.java
-```
-
----
-
-# Learning Concepts Covered
-
-- Spring Boot REST APIs
-- DTO Pattern
-- Validation
-- Global Exception Handling
-- JPA & Hibernate
-- Password Hashing
-- Layered Architecture
-- Clean Code Practices
+5. Open:
+   http://localhost:8080/register.html
 
 ---
 
 # Future Improvements
 
-- JWT Authentication
-- Role-Based Authorization
+- Swagger/OpenAPI
 - Refresh Tokens
-- Swagger Documentation
+- Docker Deployment
 - Unit Testing
-- Email Verification
+- React Frontend
 
 ---
 
 # Author
 
-Built as a Spring Boot learning project.
+Built as a full-stack Spring Boot authentication learning project.
